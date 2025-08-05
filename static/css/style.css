@@ -1,0 +1,49 @@
+.email-popup {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    z-index: 999;
+    display: none;
+}
+
+.codeSnippet, code, pre {
+    font-family: "JetBrains Mono", "Fira Code", Consolas, "Courier New", monospace;
+}
+
+.hljs-ln-numbers {
+    -webkit-user-select: none;
+    user-select: none;
+    text-align: right;
+    color: #aaa;
+    border-right: 10px solid #fafafa;
+    padding-right: 10px;
+    vertical-align: top;
+}
+.hljs-ln-code {
+    padding-left: 10px;
+}
+
+@keyframes checkFadeZoom {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-20deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.copyButton .check-animate {
+    animation: checkFadeZoom 0.4s ease-out;
+    display: inline-block;
+}

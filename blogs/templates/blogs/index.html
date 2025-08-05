@@ -1,0 +1,26 @@
+{% extends "blogs/base.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+{% block page_header %}
+<h2>欢迎来到 SchabeAntimonfeld 博客</h2>
+<hr>
+{% endblock %}
+{% block content %}
+<!-- 博客列表 -->
+{% for blog in blogs %}
+    <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">{{ blog.title }}</h5>
+            <p class="card-text text-muted">
+                发布于 {{ blog.date_added|date:"Y年m月d日 H:i" }}
+            </p>
+            <a href="{% url 'blogs:post_detail' blog.id %}" class="stretched-link link-primary link-offset-3 link-underline-opacity-0 icon-link icon-link-hover">
+                <span class="pt-2 lead">阅读更多</span>
+                <i class="fs-5 bi bi-chevron-double-right"></i>
+            </a>
+        </div>
+    </div>
+{% empty %}
+    <p>暂无博客内容。</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "blogs/base.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+{% block content %}
+<!-- 主题列表 -->
+<h2>主题</h2>
+<hr>
+<ul>
+  <div class="col-md-6">
+    <div class="overflow-auto" style="max-height: calc(100vh - 90px);">
+      <div class="list-group">
+        {% for topic in topics %}
+          <a href="{% url 'blogs:topic_detail' topic.id %}" class="list-group-item list-group-item-action">
+            <h5 class="mb-1">{{ topic.text }}</h5>
+          </a>
+        {% empty %}
+          <div class="alert alert-warning">暂无主题。</div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</ul>
+{% endblock content %}
