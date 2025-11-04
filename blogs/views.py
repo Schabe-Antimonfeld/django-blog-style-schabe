@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from blogs.models import Topic, BlogPost
 from django.utils.safestring import mark_safe
 import markdown
+import re
 
 
 def index(request):
@@ -22,7 +23,7 @@ def topic_detail(request, topic_id):
 
 def post_detail(request, pk):
     post = BlogPost.objects.get(pk=pk)
-    rendered_content = mark_safe(markdown.markdown(
+    html = mark_safe(markdown.markdown(
         post.content,
         extensions=[
             'fenced_code',
@@ -37,4 +38,6 @@ def post_detail(request, pk):
             }
         }
     ))
+    html = re.sub(r'<table>', '<table class="table table-bordered table-striped table-hover">', html)
+    rendered_content = mark_safe(html)
     return render(request, 'blogs/post_detail.html', {'post': post, 'rendered_content': rendered_content})
