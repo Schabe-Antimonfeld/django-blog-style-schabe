@@ -7,7 +7,7 @@
 <hr>
 <ul>
   <div class="col-md-6">
-    <div class="overflow-auto" style="max-height: calc(100vh - 90px);">
+    <div class="overflow-auto" style="max-height: calc(100vh - 90px); opacity: 0.8;">
       <div class="list-group">
         {% for topic in topics %}
           <a href="{% url 'blogs:topic_detail' topic.id %}" class="list-group-item list-group-item-action">

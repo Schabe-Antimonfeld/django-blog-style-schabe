@@ -53,8 +53,26 @@
 
 </head>
 
+<style>
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        background-image: url("{% static 'images/background.png' %}");
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+        filter: blur(3px);
+        opacity: 0.5;
+    }
+</style>
+
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border fixed-top">
+    <div class="background"></div>
+    <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border fixed-top" style="background-color: #F9B8C2;">
         <!-- 导航栏名称 -->
         <a class="navbar-brand ms-5" href="{% url 'blogs:index' %}">
             SchabeAntimonfeld</a>

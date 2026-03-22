@@ -23,7 +23,7 @@
 
 {% block content %}
 <!-- 博客内容 -->
-<div class="card mb-3 shadow-sm">
+<div class="card mb-3 shadow" style="opacity: 0.8;">
     <div class="card-body">
         {{ rendered_content|json_script:"markdown-source" }}
         <div id="markdown-rendered"></div>
