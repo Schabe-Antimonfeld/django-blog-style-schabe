@@ -2,7 +2,11 @@
 {% load django_bootstrap5 %}
 {% load static %}
 {% block page_header %}
-<h2>{{ topic.text }}</h2>
+<div class="card mb-3 shadow" style="opacity: 0.8;">
+    <div class="card-body">
+        <h2>{{ topic.text }}</h2>
+    </div>
+</div>
 <hr>
 {% endblock %}
 {% block content %}
@@ -14,6 +18,14 @@
             <h5 class="card-title">{{ blog.title }}</h5>
             <p class="card-text text-muted">
                 发布于 {{ blog.date_added|date:"Y年m月d日 H:i" }}
+            </p>
+            <p class="text-muted mb-1">
+                <i class="bi bi-tags text-primary"></i>
+                {% for topic in blog.topic.all %}
+                    <a href="{% url 'blogs:topic_detail' topic.id %}" class="btn btn-sm btn-outline-primary text-decoration-none">{{ topic.text }}</a>
+                {% empty %}
+                    <span class="text-muted">无主题</span>
+                {% endfor %}
             </p>
             <a href="{% url 'blogs:post_detail' blog.id %}" class="stretched-link link-primary link-offset-3 link-underline-opacity-0 icon-link icon-link-hover">
                 <span class="pt-2 lead">阅读更多</span>
