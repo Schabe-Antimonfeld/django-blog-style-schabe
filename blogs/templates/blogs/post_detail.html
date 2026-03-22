@@ -25,7 +25,53 @@
 <!-- 博客内容 -->
 <div class="card mb-3 shadow-sm">
     <div class="card-body">
-        {{ rendered_content|safe }}
+        {{ rendered_content|json_script:"markdown-source" }}
+        <div id="markdown-rendered"></div>
     </div>
 </div>
+
+<script>
+    (function () {
+        const sourceElement = document.getElementById('markdown-source');
+        const targetElement = document.getElementById('markdown-rendered');
+
+        if (!sourceElement || !targetElement || typeof window.markdownit !== 'function') {
+            return;
+        }
+
+        const markdownText = JSON.parse(sourceElement.textContent || '""');
+        const parser = window.markdownit({
+            html: true,
+            linkify: true,
+            typographer: true,
+            breaks: true
+        });
+
+        if (typeof window.texmath === 'function' && typeof window.katex !== 'undefined') {
+            parser.use(window.texmath, {
+                engine: window.katex,
+                delimiters: 'dollars',
+                katexOptions: {
+                    throwOnError: false,
+                    strict: 'ignore'
+                }
+            });
+        }
+
+        const defaultTableOpen = parser.renderer.rules.table_open || function (tokens, idx, options, env, self) {
+            return self.renderToken(tokens, idx, options);
+        };
+
+        parser.renderer.rules.table_open = function (tokens, idx, options, env, self) {
+            const token = tokens[idx];
+            token.attrJoin('class', 'table table-bordered table-striped table-hover');
+            return defaultTableOpen(tokens, idx, options, env, self);
+        };
+
+        targetElement.innerHTML = parser.render(markdownText);
+        if (window.hljs) {
+            window.hljs.highlightAll();
+        }
+    })();
+</script>
 {% endblock %}

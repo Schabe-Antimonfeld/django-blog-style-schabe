@@ -20,12 +20,12 @@
     user-select: none;
     text-align: right;
     color: #aaa;
-    border-right: 10px solid #fafafa;
-    padding-right: 10px;
+    border-right: 1rem solid #fafafa;
+    padding-right: 1rem;
     vertical-align: top;
 }
 .hljs-ln-code {
-    padding-left: 10px;
+    padding-left: 1rem;
 }
 
 @keyframes checkFadeZoom {

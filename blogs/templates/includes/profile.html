@@ -2,24 +2,24 @@
 {% load static %}
 
 <!--个人资料卡-->
-<div class="card mb-4 text-center">
+<div class="card mb-4 text-center profile-card">
     <img src="{% static 'images/avatar.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" style="width: 120px; height: 120px; object-fit: cover;" alt="avatar">
     <div class="card-body text-center">
         <h5 class="card-title">Schabe Antimonfeld</h5>
-        <p class="card-text text-muted">AI × Coding × Minecraft</p>
+        {% comment %} <p class="card-text text-muted">AI × Coding × Minecraft</p> {% endcomment %}
         <hr>
         <p>在读大学生</p>
         <p></p>
-        <p><i class="fab fa-github"></i> <a href="https://github.com/Schabe-Antimonfeld" target="_blank">GitHub</a></p>
+        <p><i class="fab fa-github"></i> <a href="https://github.com/Schabe-Antimonfeld" target="_blank" style="text-decoration: none;">GitHub</a></p>
         <hr>
         <p>友情链接</p>
         <p>
             <img src="{% static 'images/lonion.png' %}" alt="图标" style="width:32px;height:32px;vertical-align:middle;margin-right:4px;">
-            <a href="https://lonion1124.github.io/" target="_blank">洋葱菌的博客</a>
+            <a href="https://lonion1124.github.io/" target="_blank" style="text-decoration: none;">洋葱菌的博客</a>
         </p>
         <p>
             <img src="{% static 'images/aaaaa.png' %}" alt="图标" style="width:32px;height:32px;vertical-align:middle;margin-right:4px;">
-            <a href="https://aaaaa114514-1.github.io/" target="_blank">aaaaa online</a>
+            <a href="https://aaaaa114514-1.github.io/" target="_blank" style="text-decoration: none;">aaaaa online</a>
         </p>
     </div>
 </div>

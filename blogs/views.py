@@ -1,9 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 
 from blogs.models import Topic, BlogPost
-from django.utils.safestring import mark_safe
-import markdown
-import re
 
 
 def index(request):
@@ -23,21 +20,4 @@ def topic_detail(request, topic_id):
 
 def post_detail(request, pk):
     post = BlogPost.objects.get(pk=pk)
-    html = mark_safe(markdown.markdown(
-        post.content,
-        extensions=[
-            'fenced_code',
-            'codehilite',  # 这会自动添加 class
-            'tables',
-        ],
-        extension_configs={
-            'codehilite': {
-                'guess_lang': False,
-                'linenums': False,
-                'css_class': 'highlight',  # 可以换为 highlight
-            }
-        }
-    ))
-    html = re.sub(r'<table>', '<table class="table table-bordered table-striped table-hover">', html)
-    rendered_content = mark_safe(html)
-    return render(request, 'blogs/post_detail.html', {'post': post, 'rendered_content': rendered_content})
+    return render(request, 'blogs/post_detail.html', {'post': post, 'rendered_content': post.content})
