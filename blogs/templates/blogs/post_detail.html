@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block page_header %}
-<div class="card mb-3 shadow" style="opacity: 0.8;">
+<div class="card mb-3 shadow">
     <div class="card-body">
         <h2>{{ post.title }}</h2>
 
@@ -27,7 +27,7 @@
 
 {% block content %}
 <!-- 博客内容 -->
-<div class="card mb-3 shadow" style="opacity: 0.8;">
+<div class="card mb-3 shadow">
     <div class="card-body">
         {{ rendered_content|json_script:"markdown-source" }}
         <div id="markdown-rendered"></div>

@@ -33,6 +33,12 @@ body {
 
 .codeSnippet, code, pre {
     font-family: "JetBrains Mono", "Fira Code", Consolas, "Courier New", monospace;
+    background-color: #ffffff66;
+    border-radius: 0.5rem;
+}
+
+.codeSnippet {
+    background-color: #ffffff66 !important;
 }
 
 .hljs-ln-numbers {
@@ -40,10 +46,11 @@ body {
     user-select: none;
     text-align: right;
     color: #aaa;
-    border-right: 1rem solid #fafafa;
+    border-right: 1rem solid transparent;
     padding-right: 1rem;
     vertical-align: top;
 }
+
 .hljs-ln-code {
     padding-left: 1rem;
 }
@@ -68,10 +75,6 @@ body {
     display: inline-block;
 }
 
-.animated-card {
-    animation: fadeInUp 0.6s ease-out;
-}
-
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -83,7 +86,19 @@ body {
     }
 }
 
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .card {
     background-color: #ffffff66;
     backdrop-filter: blur(10px);
+    animation: fadeInUp 0.6s ease-out;
 }
